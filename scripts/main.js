@@ -1,5 +1,9 @@
-$('a').click(function() {
-    return false;
+$('a').click(function(e) {
+    if (e.target.href && e.target.href != '#') {
+        return true;
+    } else {
+        return false;
+    }
 });
 
 var clickevent = 'mousedown';

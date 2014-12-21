@@ -6,9 +6,52 @@
 
   <title>高校女神猜猜看！</title>
   <link rel="stylesheet" type="text/css" href="styles/main.css">
+  <style type="text/css">
+    .nav, .main_content {
+      -webkit-transition: .2s all ease;
+      -moz-transition: .2s all ease;
+      transition: .2s all ease;
+      width: 100%;
+    }
+    .main_content:before {
+      content: " ";
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+    }
+
+    .menu_container, .anchor-link { display: block; }
+
+    .nav { margin-left: -100%; float: left;}
+    .main_content { margin-left: 0; float: left; }
+
+    body.active .nav { margin-left: 0; width:80%;}
+    body.active .main_content { margin-right: -100%; }
+
+    nav { padding: 0.6em 0; border: none; padding: 0; }
+    nav ul { text-align: left; font-weight: normal; }
+    nav ul li { display: block; }
+    nav ul li a { border-bottom: 1px solid #ba5405; color: #ba5405; }
+  </style>
 </head>
 <body>
-   <div id="app">
+    <div class="menu_container">
+      <a id="menu-toggle" class="anchor-link">MENU</a>
+    </div>
+
+    <nav id="#mobile-nav" class="nav" role="navigation">
+      <ul>
+        <li><a href="upload.html">排行榜</a></li>
+        <li><a href="upload.html">上传图片</a></li>
+        <li><a href="#">我喜欢</a></li>
+        <li><a href="#">关于</a></li>
+      </ul>
+    </nav>
+
+   <div class="main_content app">
      <div id="people"></div>
      <div id="control">
        <div class="button no">
@@ -26,5 +69,13 @@
 
   <script type="text/javascript" src="http://static.wdjimg.com/ajax/libs/zepto/1.1.4/zepto.min.js"></script>
   <script type="text/javascript" src="scripts/main.js"></script>
+  <script type="text/javascript">
+    $(function() {
+        $('#menu-toggle').click(function (e) {
+          $('body').toggleClass('active');
+          e.preventDefault();
+        });
+    })
+  </script>
 </body>
 </html>
