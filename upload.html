@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+  <title>高校女神猜猜看！</title>
+  <style type="text/css">
+    @import url(http://weloveiconfonts.com/api/?family=fontawesome);
+    [class*="fontawesome-"]:before {
+      font-family: 'FontAwesome', sans-serif;
+    }
+    .images-wrapper > * {
+      display: inline-block;
+      vertical-align: top;
+      margin: 2px;
+      width: 32%;
+      padding-bottom: 32%;
+      height: 0;
+
+      /* footer-btn height */
+      margin-bottom: 50px;
+    }
+    .previewer {
+      background: no-repeat center;
+      background-size: cover;
+    }
+    .uploader {
+      border: 2px dashed #bbb;
+
+      text-align: center;
+      line-height: 100px;
+      font-style: normal;
+      color: #bbb;
+      font-size: 50px;
+      position: relative;
+      cursor: pointer;
+    }
+    .uploader:before {
+      font-family: 'FontAwesome';
+      content: "\f067";
+      font-style: normal;
+    }
+    .uploader input {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      cursor: pointer;
+      visibility: hidden;
+    }
+    .label-textarea {
+      border: none;
+      resize: none;
+      width: 100%;
+      height: 52px;
+      font-size: 18px;
+      line-height: 26px;
+    }
+    .footer-btn {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: 40px;
+      background: #eee;
+      border: 1px solid #eee;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <textarea class="label-textarea" placeholder="添加标注..."></textarea>
+    <div class="images-wrapper">
+      <label class="uploader">
+        <input class="upload-input" type="file" multiple>
+      </label>
+    </div>
+    <button class="footer-btn">提交</button>
+  </div>
+
+  <script type="text/javascript" src="http://static.wdjimg.com/ajax/libs/zepto/1.1.4/zepto.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      var $uploader = $('.upload-input');
+      $uploader.change(function(e) {
+        $.each($uploader.get(0).files, function(idx, file) {
+          var reader = new FileReader();
+          reader.onload = function(event) {
+            $('<div class="previewer" />').css('background-image', 'url(' + event.target.result + ')').insertBefore($('.uploader'));
+          }
+          reader.readAsDataURL(file);
+        });
+      });
+    });
+  </script>
+  <script type="text/javascript" src="scripts/main.js"></script>
+</body>
+</html>
