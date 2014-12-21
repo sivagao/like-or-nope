@@ -2,4 +2,4 @@
 
 ### Screenshots
 
-![demo1.png](./materials/like-or-not-demo.gif)
+![demo1.png](./_materials/like-or-not-demo.gif)
